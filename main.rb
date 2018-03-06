@@ -1,16 +1,16 @@
 current_path = "./#{File.dirname(__FILE__)}"
 
-require current_path + '/game.rb'
-require current_path + '/result_printer.rb'
-require current_path + '/word_reader.rb'
+require_relative 'lib/game'
+require_relative 'lib/result_printer.rb'
+require_relative 'lib/word_reader.rb'
 
 printer = ResultPrinter.new
 
 reader = WordReader.new
 
-slovo = reader.read_from_file("#{current_path}/data/words.txt")
+word = reader.read_from_file("#{current_path}/data/words.txt")
 
-game = Game.new(slovo)
+game = Game.new(word)
 
 while game.status.zero?
   printer.print_status(game)
